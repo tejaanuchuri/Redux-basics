@@ -42,8 +42,14 @@ function goals (state = [],action){
     }
 }
 
+function app (state={}, action) {
+    return {
+        todo: {state.todos,action},
+        goals: {state.goal,action},
+    }
+}
 //create store variable 
-const store = createStore(todos)
+const store = createStore(app)
 
 store.subscribe(()=>{
     console.log('the new state is: ',store.getState());
