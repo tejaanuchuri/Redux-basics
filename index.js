@@ -28,8 +28,10 @@ function createStore (reducer) {
 function todos (state = [],action) {  //reducer function
     if (action.type == 'ADD_TODO') {
         return state.concat([action.todo])
+    }else if(action.type === 'REMOVE_TODO'){
+        return state.filter((todo)=> todo.id !== action.id)
+    }
     return state
-}
 }
 
 
