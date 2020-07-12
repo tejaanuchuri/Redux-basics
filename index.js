@@ -27,7 +27,7 @@ const unsubscribe = store.subscribe(()=>{
     console.log('the state change');
 })
 
-unsubscribe()
+unsubscribe();
 
 
 
