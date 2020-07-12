@@ -8,3 +8,7 @@ function createStore () {
         getState
     }
 }
+//create store variable 
+const store = createStore()
+
+
