@@ -1,12 +1,6 @@
-function todos (state = [],action) {
-    if (action.type == 'ADD_TODO') {
-        return state.concat([action.todo])
-    }
-    return state
-}
 
-
-function createStore () {
+// this is library code 
+function createStore (reducer) {
     let state // create a state variable is going to change to hold entire application
     let listeners = []
     // acess the state
@@ -19,7 +13,7 @@ function createStore () {
      }
 
      const dispatch = (action) => {
-         state = todos(state,action)
+         state = reducer(state,action)
      }  
      return {
         getState,
@@ -27,20 +21,16 @@ function createStore () {
         dispatch
     }
 }
+
+
+// App code
+
+function todos (state = [],action) {
+    if (action.type == 'ADD_TODO') {
+        return state.concat([action.todo])
+    return state
+}
+
+
 //create store variable 
-const store = createStore()
-
-//the way to listen for changes on the state 
-store.subscribe(()=>{
-    console.log('the new state is :', store.getState());
-})
-
-//update the state
-const unsubscribe = store.subscribe(()=>{
-    console.log('the state change');
-})
-
-unsubscribe();
-
-
-
+const store = createStore(todos)
