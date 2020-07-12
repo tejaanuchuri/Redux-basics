@@ -11,4 +11,9 @@ function createStore () {
 //create store variable 
 const store = createStore()
 
+//the way to listen for changes on the state 
+store.subscribe(()=>{
+    console.log('the new state is :', store.getState());
+})
+
 
