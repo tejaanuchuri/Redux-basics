@@ -1,3 +1,11 @@
+function todos (state = [],action) {
+    if (action.type == 'ADD_TODO') {
+        return state.concat([action.todo])
+    }
+    return state
+}
+
+
 function createStore () {
     let state // create a state variable is going to change to hold entire application
     let listeners = []
@@ -9,9 +17,14 @@ function createStore () {
              listeners = listeners.filter((l)=>l!==listener)
          }
      }
+
+     const dispatch = (action) => {
+         state = todos(state,action)
+     }  
      return {
         getState,
-        subscribe
+        subscribe,
+        dispatch
     }
 }
 //create store variable 
