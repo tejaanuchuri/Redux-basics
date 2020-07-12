@@ -4,5 +4,7 @@ function createStore () {
     // acess the state
      const getState = () => state;
 
-     
+     return {
+        getState
+    }
 }
